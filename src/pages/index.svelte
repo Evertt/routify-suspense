@@ -4,7 +4,7 @@
   import Apples from './_Apples.svelte'
 
   const params = new URLSearchParams(window.location.search)
-  let timeout = params.get('timeout') || 1900
+  let timeout = params.get('timeout') || 2000
   setTimeout(() => $ready(), timeout)
 </script>
 
