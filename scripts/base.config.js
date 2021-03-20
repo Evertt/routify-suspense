@@ -77,7 +77,7 @@ function baseConfig(config, ctx) {
             }),
             commonjs(),
 
-            production && terser(), // minify
+            // production && terser(), // minify
             !production && isNollup && Hmr({ inMemory: true, public: staticDir, }), // refresh only updated code
             !production && !isNollup && livereload(distDir), // refresh entire window when code is updated
         ],
