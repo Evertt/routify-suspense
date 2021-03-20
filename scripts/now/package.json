@@ -2,7 +2,8 @@
   "scripts": {
     "build": "echo \"dummy build\"",
     "build:app": "cd ../.. && npm run build",
-    "deploy": "node build && npx now"
+    "deploy": "node build && vercel",
+    "deploy:prod": "node build && vercel --prod"
   },
   "dependencies": {
     "@sveltech/ssr": "^0.0.11",

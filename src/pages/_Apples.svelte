@@ -1,16 +1,22 @@
 <script>
   import { Suspense } from '@jamcart/suspense'
-    
+
+  let wait = 0
+  const appleCount = 500
+  const maxWait = 2000
+  
   function timer () {
     return new Promise(resolve => {
-      const timeout = Math.round(Math.random() * 2000)
+      wait += maxWait / appleCount
+      const random = Math.round(Math.random() * maxWait) - maxWait
+      const timeout = Math.min(Math.max(wait + random, 0), maxWait)
       setTimeout(resolve, timeout)
     })
   }
-  </script>
+</script>
   
   <div class="grid">
-    {#each Array(500) as i}
+    {#each Array(appleCount) as i}
       <Suspense let:suspend>
         <div slot="loading">⌛</div>
   

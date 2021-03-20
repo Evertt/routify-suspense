@@ -4,19 +4,30 @@
   import Apples from './_Apples.svelte'
 
   const params = new URLSearchParams(window.location.search)
-  let timeout = params.get('timeout') || 2000
-  setTimeout(() => $ready(), timeout)
+  let timeout = params.get('timeout') || 1500
+
+  setTimeout(() => $ready(), window.routify.inBrowser ? timeout / 4 : timeout)
 </script>
 
-<p>
-  Choose an amount of time to wait for SSR.<br />
-  The apples will all take anywhere between 0 and 2 seconds to load.
-</p>
-
-<input type="range" bind:value={timeout} min=0 max=2100 step=100 />
-{timeout} ms
-<button on:click={_ => window.location = `?timeout=${timeout}`}>(Re)load</button>
+<div class="outer">
+  <div>Choose an amount of time to wait for SSR.</div>
+  <div>
+    <input type="range" bind:value={timeout} min=0 max=2100 step=100 />
+    {timeout} ms
+    <button on:click={_ => window.location = `?timeout=${timeout}`}>(Re)load</button>
+  </div>
+</div>
 
 <SuspenseList collapse>
   <Apples />
 </SuspenseList>
+
+<style>
+  .outer {
+    @apply flex justify-between items-center my-4 px-2;
+  }
+
+  input, button {
+    @apply m-0;
+  }
+</style>

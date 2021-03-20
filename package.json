@@ -10,6 +10,7 @@
     "export": "spank",
     "build:docker": "npm run build && ./scripts/docker/docker-build.sh",
     "deploy:now": "cd scripts/now && npm run deploy",
+    "deploy:now:prod": "cd scripts/now && npm run deploy:prod",
     "deploy:netlify": "cd scripts/netlify && npm run deploy",
     "rollup": "rollup -cw",
     "nollup": "nollup -c",
